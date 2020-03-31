@@ -1,0 +1,73 @@
+title 0.4: new note
+
+browser->server:HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note
+
+note over browser:
+form data is sent with HTTP POST request to address new_note
+data is sent as body of POST request
+end note 
+
+server->browser:Status code 302 URL Redirect
+
+note over server:
+server accesses data using req.body 
+server creates a new note object and adds it to notes array
+server asks browser to do a new HTTP GET req to /notes
+end note
+
+browser->server:HTTP GET https://fullstack-exampleapp.herokuapp.com/notes
+
+note over browser:
+browser requests notes html page from server
+end note 
+
+server->browser:HTML code
+
+note over server:
+server responds with notes html code
+end note 
+
+browser->server:HTTP GET https://fullstack-exampleapp.herokuapp.com/main.css
+
+note over browser:
+browser requests notes css file main.css from server
+end note 
+
+server->browser:main.css
+
+note over server:
+server responds with main.css file
+end note 
+
+browser->server:HTTP GET https://fullstack-exampleapp.herokuapp.com/main.js
+
+note over browser:
+browser requests main.js file from server
+end note 
+
+server->browser:main.js
+
+note over server:
+server responds with main.js file
+end note 
+
+note over browser:
+browser executes js code that requires data.json
+end note
+
+browser->server:HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+
+note over browser:
+browser requests data.json file from server
+end note 
+
+server->browser:[{"content":"HTML is easy",".......}]
+
+note over server:
+server responds with data.json file
+end note 
+
+note over browser:
+browser executes the event handler
+that renders notes to DOM
+end note

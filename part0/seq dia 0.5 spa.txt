@@ -1,0 +1,55 @@
+title 0.5: Single page app
+
+
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/spa
+
+note over browser:
+browser requests spa html page from server
+end note 
+
+server->browser: HTML code
+
+note over server:
+server responds with spa html code
+end note 
+
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.css
+
+note over browser:
+browser requests css page main.css from server
+end note 
+
+server->browser: main.css
+
+note over server:
+server responds with main.css file
+end note 
+
+browser->server: HTTP GET  https://fullstack-exampleapp.herokuapp.com/spa.js
+
+note over browser:
+browser requests java script file spa.js from server
+end note 
+
+server->browser: spa.js
+
+note over server:
+server responds with spa.js file
+end note 
+
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+
+note over browser:
+browser requests data.json from server
+end note 
+
+server->browser: [{"content":"HTML is easy","date":"2019-05-...}]
+
+note over server:
+server responds with data.json
+end note 
+
+note over browser:
+code fetches notes from server as JSON data and adds HTML elements 
+for displaying notes to page using DOM
+end note 
