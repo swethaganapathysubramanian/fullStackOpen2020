@@ -2,22 +2,20 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
 const App = (props) => {
+  
   const [selected, setSelected] = useState(0)
   const [votes, setVotes] = useState(new Array(6).fill(0))
-  const [max,setMax] = useState(0);
+  const [max, setMax] = useState(0);
 
   const selectRandom = () => {
-    setSelected(Math.floor(Math.random()*Math.floor(6)));
-    console.log("clicked!")
+    setSelected(Math.floor(Math.random()*Math.floor(6))); 
   }
 
   const updateVote = () => {
     const votesCopy = [...votes]
-    console.log(votesCopy);
     votesCopy[selected] += 1
     setVotes(votesCopy);
-    setMax(votes.indexOf(Math.max(...votes)));
-    console.log(max);
+    setMax(votesCopy.indexOf(Math.max(...votesCopy)));
   }
 
   return (
@@ -31,7 +29,8 @@ const App = (props) => {
       <br/>
       <div>
       <h1>Anecdote with Most number of Votes</h1>
-        {props.anecdotes[max]}
+        {props.anecdotes[max]} <br />
+        <p> has {votes[max]} votes</p>
       </div>
       
     </div>

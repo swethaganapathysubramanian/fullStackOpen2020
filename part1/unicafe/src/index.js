@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-const Statistics = (props) => {
+const Statistics = ({good, neutral, bad, total, score }) => {
 
       // console.log(props.total)
-      if(props.total <= 0){
+      if(total <= 0){
         return(
           <div>
             <p>No Feedback</p>
@@ -11,18 +11,18 @@ const Statistics = (props) => {
         )
       }
       // console.log(props.score);
-      const average = props.score / props.total;
-      const percentage = (props.good / props.total) * 100 ;
+      const average = score / total;
+      const percentage = (good /total) * 100 ;
     
       return (
         <div>
           <h1> Statistics</h1>
           <table>
           <tbody>
-            <Statistic name="Good" value={props.good} />
-            <Statistic name="Neutral" value={props.neutral} />
-            <Statistic name="Bad" value={props.bad} />
-            <Statistic name="Total" value={props.total} />
+            <Statistic name="Good" value={good} />
+            <Statistic name="Neutral" value={neutral} />
+            <Statistic name="Bad" value={bad} />
+            <Statistic name="Total" value={total} />
             <Statistic name="Average" value={average} />
             <Statistic name="Percentage" value={percentage} />
             </tbody>
