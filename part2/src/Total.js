@@ -3,7 +3,8 @@ import React from 'react'
 
 const Total = ({ parts }) => {
     return (
-        <p>Number of Exercises {parts[0].exercises + parts[1].exercises + parts[2].exercises} </p>
+        <p><strong>
+            total of {parts.reduce((total, part) => total + part.exercises, 0)} exercises </strong></p>
     )
 
 }
