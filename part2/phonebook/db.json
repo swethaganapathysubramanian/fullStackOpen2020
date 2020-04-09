@@ -24,6 +24,11 @@
       "name": "Hello",
       "number": "1234567890",
       "id": 5
+    },
+    {
+      "name": "NewModuleAddCheck",
+      "number": "100100100100",
+      "id": 6
     }
   ]
 }

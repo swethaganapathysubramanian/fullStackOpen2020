@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Persons from './components/Persons';
 import PersonForm from './components/PersonForm'
 import Filter from './components/Filter'
-import axios from 'axios'
+import personService from './services/Person'
 
 const App = () => {
 
@@ -12,8 +12,8 @@ const App = () => {
   const [filterVal, setFilter] = useState('')
 
   useEffect(() => {
-    axios.get('http://localhost:3001/persons')
-        .then(response => setPersons(response.data))
+    personService.getData()
+        .then(personList => setPersons(personList))
         .catch(err=> console.log(err))
   },[])
 
@@ -33,9 +33,9 @@ const App = () => {
     if(persons.some(person => person.name === newName)){
       alert(`${newName} already Exists in PhoneBook`)
     } else {
-      axios.post('http://localhost:3001/persons',nameObj)
-      .then(response=>{
-        console.log(response.data)
+      personService.addData(nameObj)
+      .then(result=>{
+        console.log(result)
         setPersons(persons.concat(nameObj))
       })
     }
