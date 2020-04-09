@@ -26,23 +26,50 @@ const App = () => {
   
   const addName = (e) => {
     e.preventDefault();
-    const nameObj = {
-      name: newName,
-      number: newNumber
+
+    if (newName === ' '){
+      alert("Enter Name")
     }
+
+    else if(newNumber === ' '){
+      alert("Enter Number")
+    }
+    else {
+      const nameObj = {
+          name: newName,
+          number: newNumber
+    }
+    
     if(persons.some(person => person.name === newName)){
-      alert(`${newName} already Exists in PhoneBook`)
-    } else {
+        const obj = persons.find(person => person.name === newName)
+        if(obj.number !== newNumber){
+          var decision = window.confirm(`${obj.Name} is already added to Phonebook. Replace old number with new Number?`)
+          
+          if(decision){
+          const changedObj = {...obj, number: newNumber}
+          personService.updateData(obj.id, changedObj)
+          .then(updatedData=> {
+          setPersons(persons.map(person => person.id !== obj.id? person: updatedData))
+          })
+          }
+        }
+        else if (obj.number === newNumber || newNumber === ' '){
+        alert(`${newName} already Exists in PhoneBook`)
+        } 
+    }
+    else {
       personService.addData(nameObj)
       .then(result=>{
         console.log(result)
         setPersons(persons.concat(nameObj))
       })
     }
+
     setNewName('')
     setNewNumber('')
     setFilter('') 
   }
+}
 
   const deletePerson = (id) => {
        console.log(id)
