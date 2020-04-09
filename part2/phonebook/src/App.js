@@ -33,7 +33,11 @@ const App = () => {
     if(persons.some(person => person.name === newName)){
       alert(`${newName} already Exists in PhoneBook`)
     } else {
+      axios.post('http://localhost:3001/persons',nameObj)
+      .then(response=>{
+        console.log(response.data)
         setPersons(persons.concat(nameObj))
+      })
     }
     setNewName('')
     setNewNumber('')
