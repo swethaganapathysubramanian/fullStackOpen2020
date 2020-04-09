@@ -1,16 +1,24 @@
 import React from 'react'
-import Person from './Person'
 
-const Persons = ({persons, filterVal}) => {
+
+const Persons = ({persons, filterVal, deletePerson }) => {
     const filteredPersons = persons.filter(person => person.name.toLowerCase().includes(filterVal.toLowerCase()));
     
+    const handleDelete = (id, name) => {
+        const decision = window.confirm(`Delete ${name}?`);
+        if (decision) {
+            deletePerson(id);
+        } else {
+            console.log("Do not Delete")
+        }
+    }
+
     return(
         <div>
-            <table>
-            <tbody>
-            {filteredPersons.map(person=><Person key= {person.name} name={person.name} number ={person.number} />)}
-            </tbody>
-            </table>
+        {filteredPersons.map(person => 
+            <p key={person.name}>
+        { person.name } { person.number } <button onClick = {()=>handleDelete(person.id, person.name)}> Delete!</button>
+        </p>)}
         </div>
     )
 }

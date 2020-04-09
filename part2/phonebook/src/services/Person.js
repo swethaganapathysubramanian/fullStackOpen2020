@@ -12,4 +12,9 @@ const addData = (nameObj) => {
     return request.then(response => response.data)
 }
 
-export default { getData, addData }
+const deleteData = (id) => {
+    const request = axios.delete(`${url}/${id}`)
+    return request.then(response => response.data)
+}
+
+export default { getData, addData, deleteData }

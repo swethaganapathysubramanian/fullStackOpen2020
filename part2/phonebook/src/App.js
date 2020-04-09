@@ -44,6 +44,13 @@ const App = () => {
     setFilter('') 
   }
 
+  const deletePerson = (id) => {
+       console.log(id)
+       personService.deleteData(id)
+      .then(setPersons(persons.filter(person=> person.id !== id)))
+      .catch(err=>console.log(err))
+  }
+
   const filterData = (e) => {
      setFilter(e.target.value);     
   }
@@ -55,7 +62,7 @@ const App = () => {
       <h2>Add a new contact</h2>
       <PersonForm newName = {newName} newNumber={newNumber} handleChange ={handleChange} addName={addName} />
       <h2>Numbers</h2>
-      <Persons persons={persons} filterVal = {filterVal}/>
+      <Persons persons={persons} filterVal = {filterVal} deletePerson = {deletePerson}/>
     </div>
   )
 }
