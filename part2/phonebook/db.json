@@ -21,11 +21,6 @@
       "id": 4
     },
     {
-      "name": "Hello",
-      "number": "75",
-      "id": 5
-    },
-    {
       "name": "NewModuleAddCheck",
       "number": "100100100100",
       "id": 6
@@ -39,11 +34,6 @@
       "name": "Damon",
       "number": "123",
       "id": 8
-    },
-    {
-      "name": "Situ",
-      "number": "234",
-      "id": 9
     },
     {
       "name": "Contact",

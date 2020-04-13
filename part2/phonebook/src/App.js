@@ -93,7 +93,7 @@ const App = () => {
       .then(setPersons(persons.filter(person=> person.id !== id)))
          .catch(error => {
            setMessage(
-             `Note '${deletedPerson.name}' was already removed from server`
+             `Information '${deletedPerson.name}' was already removed from server`
            )
            setType('error')
            setTimeout(() => {
