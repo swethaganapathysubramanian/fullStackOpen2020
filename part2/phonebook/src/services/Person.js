@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-const url = `http://localhost:3001/persons`
+//make app work with backend 3.9 and proxy added to package.json
+const url = `/api/persons`
 
 const getData = () => {
     const request = axios.get(url)
