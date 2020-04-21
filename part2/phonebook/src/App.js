@@ -46,19 +46,19 @@ const App = () => {
     if(persons.some(person => person.name === newName)){
         const obj = persons.find(person => person.name === newName)
         if(obj.number !== newNumber){
-          var decision = window.confirm(`${obj.Name} is already added to Phonebook. Replace old number with new Number?`)
+          var decision = window.confirm(`${newName} is already added to Phonebook. Replace old number with new Number?`)
           
           if(decision){
           const changedObj = {...obj, number: newNumber}
           personService.updateData(obj.id, changedObj)
           .then(updatedData=> {
-          setPersons(persons.map(person => person.id !== obj.id? person: updatedData))
-            setMessage(`${newName}'s number is updated in the Phonebook`)
-            setType('notification')
-            setTimeout(() => {
-              setMessage(null)
-              setType(null)
-            }, 5000)
+              setPersons(persons.map(person => person.id !== obj.id? person: updatedData))
+              setMessage(`${newName}'s number is updated in the Phonebook`)
+              setType('notification')
+              setTimeout(() => {
+                setMessage(null)
+                setType(null)
+              }, 5000)
           })
           }
         }
@@ -69,10 +69,16 @@ const App = () => {
     else {
       personService.addData(nameObj)
       .then(result=>{
-        console.log(result)
+        //3.20 Validation Message
+        if (typeof result === 'string' ){
+          setMessage(result)
+          setType('error')
+        }
+        else{
         setPersons(persons.concat(nameObj))
         setMessage(`${newName} is added to the Phonebook`)
-        setType('notification')
+        setType('notification') 
+      }
         setTimeout(() => {
           setMessage(null)
           setType(null)
