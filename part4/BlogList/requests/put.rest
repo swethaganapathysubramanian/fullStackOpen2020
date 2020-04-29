@@ -1,0 +1,9 @@
+PUT http://localhost:3003/api/blogs/5ea269e9a900fc3954298ace
+content-type: application/json
+
+{
+    "title":"My Fourth Blog",
+    "author":"Swetha",
+    "url":"www.livetoeat.netlify.com",
+    "likes":12
+}
